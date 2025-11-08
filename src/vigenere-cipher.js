@@ -20,61 +20,19 @@ const { NotImplementedError } = require('../lib');
  *
  */
 class VigenereCipheringMachine {
-    constructor(direct = true) {
-        this.direct = direct;
-        this.alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    }
+  encrypt() {
+    // Remove line below and write your code here
+    throw new NotImplementedError('Not implemented');
+  }
 
-    encrypt(message, key) {
-        if (!message || !key) {
-            throw new Error('Incorrect arguments!');
-        }
-
-        return this.processText(message, key, 'encrypt');
-    }
-
-    decrypt(encryptedMessage, key) {
-        if (!encryptedMessage || !key) {
-            throw new Error('Incorrect arguments!');
-        }
-
-        return this.processText(encryptedMessage, key, 'decrypt');
-    }
-
-    processText(text, key, mode) {
-        const upperText = text.toUpperCase();
-        const upperKey = key.toUpperCase();
-        let result = '';
-        let keyIndex = 0;
-
-        for (let i = 0; i < upperText.length; i++) {
-            const currentChar = upperText[i];
-
-            if (this.alphabet.includes(currentChar)) {
-                const textIndex = this.alphabet.indexOf(currentChar);
-                const keyChar = upperKey[keyIndex % upperKey.length];
-                const keyIndexInAlphabet = this.alphabet.indexOf(keyChar);
-
-                let newIndex;
-                if (mode === 'encrypt') {
-                    newIndex = (textIndex + keyIndexInAlphabet) % this.alphabet.length;
-                } else {
-                    newIndex = (textIndex - keyIndexInAlphabet + this.alphabet.length) % this.alphabet.length;
-                }
-
-                result += this.alphabet[newIndex];
-                keyIndex++;
-            } else {
-                result += currentChar;
-            }
-        }
-
-        return this.direct ? result : result.split('').reverse().join('');
-    }
+  decrypt() {
+    // Remove line below and write your code here
+    throw new NotImplementedError('Not implemented');
+  }
 }
 
 module.exports = {
-    directMachine: new VigenereCipheringMachine(),
-    reverseMachine: new VigenereCipheringMachine(false),
-    VigenereCipheringMachine,
+  directMachine: new VigenereCipheringMachine(),
+  reverseMachine: new VigenereCipheringMachine(false),
+  VigenereCipheringMachine,
 };
